@@ -86,8 +86,8 @@ void Context::JSON(HttpStatusCode code, const std::string& data) {
 }
 
 //单文件传输
-void Context::FILE(HttpStatusCode code, const std::string &filepath, std::string filename) {
-    session_->SendFile(code, filepath, filename);
+void Context::FILE(HttpStatusCode code, const std::string &filepath, std::string filename, std::string content_disposition) {
+    session_->SendFile(code, filepath, filename, content_disposition);
 }
 
 //MULTIPART 数据
