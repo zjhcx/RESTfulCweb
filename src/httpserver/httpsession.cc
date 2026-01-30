@@ -92,7 +92,7 @@ void HttpSession::SendJson(HttpStatusCode code, const std::string& data) {
     Send(bdata);
 }
 
-void HttpSession::SendFile(HttpStatusCode code, const std::string& filepath, std::string filename) {
+void HttpSession::SendFile(HttpStatusCode code, const std::string& filepath, std::string filename, std::string content_disposition) {
     static std::unordered_map<std::string, std::string> filetypes = {
         {"jpeg", "image/jpeg"},
         {"jpg", "image/jpeg"},
@@ -129,7 +129,7 @@ void HttpSession::SendFile(HttpStatusCode code, const std::string& filepath, std
     std::string header;
     HttpResponse::SetStatusCode(code, header);
     HttpResponse::SetHeader("Content-Type", filetype, header);
-    HttpResponse::SetHeader("Content-Disposition", "attachment; filename=" + filename, header);
+    HttpResponse::SetHeader("Content-Disposition", content_disposition+"; filename=" + filename, header);
     int fd = open(filepath.c_str(), O_RDONLY);
     assert(fd > 0);
     struct stat st;
