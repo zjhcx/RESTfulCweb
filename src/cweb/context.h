@@ -65,7 +65,7 @@ public:
     
     void STRING(HttpStatusCode code, const std::string& data);
     void JSON(HttpStatusCode code, const std::string& data);
-    void FILE(HttpStatusCode code, const std::string& filepath, std::string filename = "");
+    void FILE(HttpStatusCode code, const std::string& filepath, std::string filename = "", std::string content_disposition="attachment");
     void MULTIPART(HttpStatusCode code, const std::vector<MultipartPart*>& parts);
 };
 
