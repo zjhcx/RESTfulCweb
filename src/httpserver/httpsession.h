@@ -22,7 +22,7 @@ public:
     
     void SendString(HttpStatusCode code, const std::string& data);
     void SendJson(HttpStatusCode code, const std::string& data);
-    void SendFile(HttpStatusCode code, const std::string& filepath, std::string filename = "");
+    void SendFile(HttpStatusCode code, const std::string& filepath, std::string filename = "", std::string content_disposition="attachment");
     //void SendMedia(HttpStatusCode code, const std::string& filepath, //type)
     //void SendBinary()
     //void SendHtml();
